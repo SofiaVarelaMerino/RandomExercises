@@ -9,8 +9,8 @@ function resolution(space, x) {
   let array = [];
   // Constraints validations
   if (x >= 1 && x <= (10 ^ 6)) {
-    for (let i = 0; i <= space.length; i++) {
-      for (let z = i; z < x; z++) {
+    for (let i = 0; i < space.length - (x - 1); i++) {
+      for (let z = i; z < x + i; z++) {
         array.push(space[z]);
       }
       if (array.length === x) {
@@ -23,3 +23,4 @@ function resolution(space, x) {
   }
   return -1;
 }
+
