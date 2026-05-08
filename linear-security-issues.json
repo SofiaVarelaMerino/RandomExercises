@@ -1,0 +1,782 @@
+{
+  "scan_date": "2026-05-08",
+  "summary": {
+    "total_security_issues_found": 163,
+    "by_status": {
+      "open_active": {
+        "triage": 16,
+        "backlog": 8,
+        "todo": 18,
+        "in_progress": 8,
+        "in_review": 2
+      },
+      "closed": {
+        "done": 85,
+        "canceled": 12
+      }
+    },
+    "by_priority": {
+      "urgent_p1": 8,
+      "high_p2": 72,
+      "medium_p3": 56,
+      "low_p4": 27
+    }
+  },
+  "security_labels_found": [
+    {"name": "Vulnerability", "id": "5a353184-ccd3-402b-90b9-ed3862f99915"},
+    {"name": "Security Review", "id": "4f8f1dc5-a66a-45e8-8c6b-a6481427980c"},
+    {"name": "XSS", "id": "d35a8137-67d8-4de6-8dff-94b2b4d763c3"},
+    {"name": "XBOW", "id": "f4466731-2d5d-401b-840b-67a750832f78"},
+    {"name": "GETLABS", "id": "9743c2d4-4377-4d46-9cb4-ef51022175af"},
+    {"name": "prodsec-ai", "id": "48f95876-e77f-4e28-aebc-7db732cd0c72"},
+    {"name": "CWE-840", "id": "b57c1248-e0fa-433f-99e4-0c9b1df8ef8d"},
+    {"name": "CWE-862", "id": "20b4441d-2763-4235-a09b-8c216b124f80"},
+    {"name": "privacy", "id": "9c8bcd87-17e7-4815-a4b9-9ae18e241742"}
+  ],
+  "open_issues_for_deduplication": [
+    {
+      "id": "SECIT-710",
+      "title": "[GETLABS] Stored XSS via SVG upload — CDN serves application/xml without nosniff, script executes in all modern browsers",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["GETLABS", "Product Security", "XSS", "Vulnerability"],
+      "description_summary": "SVG file with script tag uploaded via POST /file, hosted on CDN without nosniff header, executes in browsers"
+    },
+    {
+      "id": "SECIT-787",
+      "title": "IDOR: Missing Authorization on GET /appointment/:id/group (Internal API)",
+      "status": "Backlog",
+      "priority": "Medium",
+      "labels": ["Vulnerability"],
+      "description_summary": "CWE-862 - Missing authorization check on getAppointmentGroup endpoint allows cross-user appointment group access"
+    },
+    {
+      "id": "SECIT-786",
+      "title": "IDOR: Missing Authorization on PATCH /appointment-requests/:id/cancel (External API)",
+      "status": "Backlog",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "CWE-862 - Missing authorization on external API cancel endpoint allows cross-partner appointment request cancellation"
+    },
+    {
+      "id": "SECIT-785",
+      "title": "IDOR: Missing Authorization on GET /appointment/:id/collected-data-raw (External API)",
+      "status": "Backlog",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "CWE-862 - Missing authorization allows cross-partner access to raw collected appointment data"
+    },
+    {
+      "id": "SECIT-784",
+      "title": "IDOR: Missing Authorization on GET /appointment/:id/collected-data (External API)",
+      "status": "Backlog",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "CWE-862 - Missing authorization allows cross-partner access to collected appointment data"
+    },
+    {
+      "id": "SECIT-770",
+      "title": "Publicly exposed container using an image with initial access vulnerabilities — enterprise-sftp-sftpgo",
+      "status": "In Progress",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "SFTPGo v2.6.6 with CVE-2025-59937, publicly exposed at 34.61.95.203:8022, access to 22 sensitive data findings"
+    },
+    {
+      "id": "SECOPS-536",
+      "title": "PHI/PII exposure in questapi logs — Datadog SDS insufficient for full remediation",
+      "status": "In Progress",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "Unredacted PHI/PII and potential credential exposure in questapi logs, Datadog SDS rules insufficient"
+    },
+    {
+      "id": "SECIT-772",
+      "title": "[GETLABS] Missing Rate Limiting on POST /lab-sample-guidelines",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "No rate limiting on lab-sample-guidelines creation endpoint, unlimited resource creation possible"
+    },
+    {
+      "id": "SECIT-753",
+      "title": "[GETLABS] Unauthenticated Partner Data Enumeration — GET /partner-url-referrer exposes 136 production partners",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "Vulnerability", "CWE-200"],
+      "description_summary": "Unauthenticated access to 136 active partner configurations with sensitive data on production"
+    },
+    {
+      "id": "SECIT-771",
+      "title": "[GETLABS] Missing Rate Limiting on POST /routing-groups",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "No rate limiting on routing-groups creation endpoint"
+    },
+    {
+      "id": "SECIT-769",
+      "title": "[FUNCTION HEALTH] Admin Impersonation Login Page Publicly Accessible — /admin-login",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["Product Security", "Vulnerability"],
+      "description_summary": "Admin impersonation login page at my.functionhealth.com/admin-login publicly accessible"
+    },
+    {
+      "id": "SECIT-752",
+      "title": "[GETLABS] Host Header Injection — GET /partner-url-referrer",
+      "status": "Triage",
+      "priority": "Low",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "Host header reflected in 308 redirect Location header"
+    },
+    {
+      "id": "SECIT-751",
+      "title": "[GETLABS] Sensitive Data Exposure — Lockscreen PIN Stored and Returned in Plaintext",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "PIN field returned in plaintext in GET /user/staff responses"
+    },
+    {
+      "id": "SECIT-750",
+      "title": "[GETLABS] IDOR Read — Unauthorized Access to Staff User Data via GET /user/staff",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "Restricted admin can access all 28 staff user records including PII"
+    },
+    {
+      "id": "SECIT-749",
+      "title": "[GETLABS] Mass Assignment — PIN Field Injection via PATCH /user/staff/:id",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "Attacker can inject PIN field in PATCH request to change any staff user's lockscreen PIN"
+    },
+    {
+      "id": "SECIT-748",
+      "title": "[GETLABS] IDOR Write — Unauthorized Modification of Staff Users via PATCH /user/staff/:id",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "No authorization checks on target resource, can modify any staff user by UUID"
+    },
+    {
+      "id": "SECIT-747",
+      "title": "[XBOW][EZRA] DOM XSS in / (Homepage) via lucid_core Parameter",
+      "status": "Backlog",
+      "priority": "Medium",
+      "labels": ["CWE-79", "XSS", "XBOW", "Vulnerability"],
+      "description_summary": "DOM XSS via Lucid loader lucid_core parameter on www.ezra.com"
+    },
+    {
+      "id": "SECIT-746",
+      "title": "[XBOW][EZRA] Reflected XSS in /en-gb/care-team via lucid_core Parameter",
+      "status": "Backlog",
+      "priority": "Medium",
+      "labels": ["CWE-79", "XSS", "XBOW", "Vulnerability"],
+      "description_summary": "Reflected XSS via Lucid loader on ezra.com"
+    },
+    {
+      "id": "SECIT-745",
+      "title": "[XBOW][EZRA] Open Redirect in /care-team via lucid_core Parameter",
+      "status": "Backlog",
+      "priority": "Medium",
+      "labels": ["XBOW", "CWE-601", "Vulnerability"],
+      "description_summary": "Open redirect via Lucid loader parameter on ezra.com"
+    },
+    {
+      "id": "SECIT-744",
+      "title": "[XBOW][EZRA] DOM Cross-Site Scripting (XSS) in /care-team via lucid_core Parameter",
+      "status": "Backlog",
+      "priority": "Medium",
+      "labels": ["CWE-79", "XSS", "XBOW", "Vulnerability"],
+      "description_summary": "DOM XSS on 6 public pages of ezra.com via Lucid loader"
+    },
+    {
+      "id": "SECIT-743",
+      "title": "Missing Critical Windows Server 2019 patch – auto-receive-instance",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "Windows Server 2019 VM missing critical OS patches with known exploits"
+    },
+    {
+      "id": "SECIT-742",
+      "title": "[GETLABS] POST /lab-location/import-csv returns 500 on any CSV input",
+      "status": "Backlog",
+      "priority": "Low",
+      "labels": ["GETLABS", "prodsec-ai", "Product Security", "Vulnerability"],
+      "description_summary": "CSV import endpoint crashes with unhandled exception, leaks error details"
+    },
+    {
+      "id": "SECIT-741",
+      "title": "[GETLABS] GET /quality-investigation/export-csv returns 500 Internal Server Error",
+      "status": "Backlog",
+      "priority": "Low",
+      "labels": ["GETLABS", "prodsec-ai", "Product Security", "Vulnerability"],
+      "description_summary": "CSV export endpoint crashes on all inputs"
+    },
+    {
+      "id": "SECIT-740",
+      "title": "[GETLABS] Missing Uniqueness Constraint on Product key Field",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "No uniqueness enforcement on product key field, allows unlimited duplicates"
+    },
+    {
+      "id": "SECIT-739",
+      "title": "[GETLABS] Unauthenticated Access to Partner Configuration Data — GET /partner-url-referrer",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "Unauthenticated access to partner config with pre-signed GCS URLs for private bucket"
+    },
+    {
+      "id": "SECIT-738",
+      "title": "[GETLABS] Information Disclosure — Unhandled Exception Exposes React Stack Trace",
+      "status": "Triage",
+      "priority": "Low",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "React stack trace exposed via unhandled date parsing exception"
+    },
+    {
+      "id": "SECIT-737",
+      "title": "Vulnerable container image flash-infra-flash-orthanc in dev-flash-infra-ecs",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "Container image with high/critical CVEs with known public exploits"
+    },
+    {
+      "id": "SECIT-736",
+      "title": "Vulnerable container image flash-infra-dicom-systems-orthanc in dev-flash-infra-ecs",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "Container image with high/critical CVEs with known exploits"
+    },
+    {
+      "id": "SECIT-713",
+      "title": "[GETLABS] Admin can read and overwrite other admins' PINs via staff profile API",
+      "status": "Backlog",
+      "priority": "High",
+      "labels": ["GETLABS", "Product Security", "CWE-915", "CWE-200", "Vulnerability"],
+      "description_summary": "Chained sensitive data exposure + mass assignment allowing PIN read/overwrite"
+    },
+    {
+      "id": "SECIT-712",
+      "title": "[GETLABS] POST /file validation error leaks internal file purpose enum",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "CWE-200", "Vulnerability"],
+      "description_summary": "NestJS class-validator error enumerates all valid file purpose enum values"
+    },
+    {
+      "id": "SECIT-711",
+      "title": "[GETLABS] Unrestricted File Upload — POST /file accepts SVG, HTML, PHP, JS",
+      "status": "Triage",
+      "priority": "High",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "Arbitrary file upload with no MIME validation when purpose is avatar"
+    },
+    {
+      "id": "SECIT-709",
+      "title": "[GETLABS] Stored XSS via lastName HTML injection — POST /auth/register",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "HTML injection in lastName field persisted to database, potential stored XSS"
+    },
+    {
+      "id": "SECIT-708",
+      "title": "[GETLABS] CDN misconfiguration — X-Content-Type-Options: nosniff missing",
+      "status": "Triage",
+      "priority": "Medium",
+      "labels": ["GETLABS", "Product Security", "Vulnerability"],
+      "description_summary": "GCS bucket serving files without security headers"
+    },
+    {
+      "id": "SECIT-697",
+      "title": "[XBOW] Exposed Developer Tools Page at /devTools",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["XBOW", "CWE-200", "Vulnerability"],
+      "description_summary": "Internal dev tools page accessible to any authenticated user"
+    },
+    {
+      "id": "SECIT-696",
+      "title": "[XBOW] IDOR in Appointment API — Enumeration of Patient Appointments, PHI Leakage",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["XBOW", "CWE-639", "Vulnerability"],
+      "description_summary": "IDOR via confirmationid in appointment management API leaks patient data"
+    },
+    {
+      "id": "SECIT-695",
+      "title": "[XBOW] Auth Tokens Exposed in localStorage — Full Account Takeover",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["XBOW", "CWE-522", "Vulnerability"],
+      "description_summary": "Tokens in localStorage enable persistent account takeover with access to 30+ endpoints and PHI"
+    },
+    {
+      "id": "SECIT-694",
+      "title": "[XBOW] Internal Guardrail Prompt & Orchestration Metadata Leaked via CopilotKit Agent SSE Stream",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["XBOW", "CWE-200", "Vulnerability"],
+      "description_summary": "System prompts and orchestration metadata exposed in SSE stream responses"
+    },
+    {
+      "id": "SECIT-693",
+      "title": "[XBOW] Missing Access Control on /medical-docs/version — Systemic Auth Enforcement Gaps",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["CWE-862", "XBOW", "Vulnerability"],
+      "description_summary": "Multiple unauthenticated endpoints across API, systemic auth gaps"
+    },
+    {
+      "id": "SECIT-692",
+      "title": "[XBOW] Authentication Bypass in /login/email — Email-Only Token Issuance Enables Gift Code Theft",
+      "status": "Todo",
+      "priority": "High",
+      "labels": ["XBOW", "CWE-287", "Vulnerability"],
+      "description_summary": "Auth bypass with email-only token issuance, chained with gift code theft and IDOR"
+    },
+    {
+      "id": "SECIT-691",
+      "title": "[XBOW] GraphQL Introspection Enabled + Verbose Error Disclosure on CopilotKit",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["XBOW", "CWE-200", "Vulnerability"],
+      "description_summary": "GraphQL introspection enabled on CopilotKit with verbose error messages"
+    },
+    {
+      "id": "SECIT-690",
+      "title": "[XBOW] Information Disclosure in CopilotKit /info Endpoint",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["XBOW", "CWE-200", "Vulnerability"],
+      "description_summary": "CopilotKit /info endpoint exposes version and agent metadata"
+    },
+    {
+      "id": "SECIT-689",
+      "title": "[XBOW] Payment Bypass in Gift Purchase — Unlimited Free Gift Codes via Fake payment_intent_id",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["CWE-840", "XBOW", "Vulnerability"],
+      "description_summary": "Gift purchase endpoint accepts fake payment_intent_id, generating unlimited free gift codes"
+    },
+    {
+      "id": "SECIT-688",
+      "title": "[XBOW] Source Code Disclosure via Exposed Source Map on my.dev.functionhealth.com",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["XBOW", "CWE-200", "Vulnerability"],
+      "description_summary": "Source maps exposed on dev environment revealing full source code"
+    },
+    {
+      "id": "SECIT-686",
+      "title": "MCS Unauthenticated PHI Exposure",
+      "status": "In Progress",
+      "priority": "High",
+      "labels": ["Vulnerability", "Product Security", "CWE-200", "CWE-284"],
+      "description_summary": "P1 - Broken access control exposing PHI without authentication on MCS endpoints"
+    },
+    {
+      "id": "SECIT-624",
+      "title": "Publicly Exposed MongoDB Instances Hosting PII and PHI",
+      "status": "In Progress",
+      "priority": "High",
+      "labels": ["Vulnerability"],
+      "description_summary": "MongoDB Atlas clusters publicly accessible containing sensitive PII/PHI"
+    },
+    {
+      "id": "SECIT-469",
+      "title": "PHI Exfiltration via Link Smuggling",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability", "AI-chat", "Product Security"],
+      "description_summary": "AI chat renders markdown without sanitization enabling link smuggling for PHI exfiltration"
+    },
+    {
+      "id": "SECIT-468",
+      "title": "Memory Poisoning via Emotional Manipulation",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["AI-chat", "Product Security", "Vulnerability"],
+      "description_summary": "AI memory can be poisoned with fake biomarker values via emotional manipulation"
+    },
+    {
+      "id": "SECIT-464",
+      "title": "Enable Rate Limiting for MCP Endpoints",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Penguin", "Product Security", "Vulnerability"],
+      "description_summary": "No rate limiting at infrastructure or application level on MCP server"
+    },
+    {
+      "id": "SECIT-463",
+      "title": "Verify JWT Algorithm Validation",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Vulnerability", "Penguin", "Product Security"],
+      "description_summary": "JWT validation without explicit algorithm verification in MCP Server"
+    },
+    {
+      "id": "SECIT-471",
+      "title": "AI-Chat Vulnerable to Serialization Injection in LangChain",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability"],
+      "description_summary": "LangChain serialization vulnerability allowing data exposure during caching/logging"
+    },
+    {
+      "id": "SECIT-413",
+      "title": "Missing security.txt File",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Reddit Feedback", "Vulnerability"],
+      "description_summary": "No security.txt for responsible disclosure"
+    },
+    {
+      "id": "SECIT-411",
+      "title": "Missing Clear-Site-Data Header",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Reddit Feedback", "Vulnerability"],
+      "description_summary": "No Clear-Site-Data header on logout"
+    },
+    {
+      "id": "SECIT-412",
+      "title": "Missing X-Permitted-Cross-Domain-Policies Header",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Reddit Feedback", "Vulnerability"],
+      "description_summary": "Missing cross-domain policies header"
+    },
+    {
+      "id": "SECIT-410",
+      "title": "Missing Subresource Integrity (SRI) on External Scripts",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Reddit Feedback", "Vulnerability"],
+      "description_summary": "External JS loaded without SRI hashes"
+    },
+    {
+      "id": "SECIT-408",
+      "title": "Deprecated TLS Versions Enabled (TLS 1.0 and TLS 1.1)",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Reddit Feedback", "Vulnerability"],
+      "description_summary": "TLS 1.0 and 1.1 still enabled on multiple endpoints"
+    },
+    {
+      "id": "SECIT-407",
+      "title": "Missing Permissions-Policy Header",
+      "status": "In Review",
+      "priority": "Low",
+      "labels": ["Reddit Feedback", "Vulnerability"],
+      "description_summary": "No Permissions-Policy header, all browser features enabled by default"
+    },
+    {
+      "id": "SECOPS-133",
+      "title": "Over Privileged Service Accounts",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability", "CWE-266", "2025-pentest"],
+      "description_summary": "Service accounts granted broad admin permissions across GCP"
+    },
+    {
+      "id": "SECIT-221",
+      "title": "Weak Cipher Suites (TLS)",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Vulnerability"],
+      "description_summary": "Endpoints support weak TLS cipher suites including TLS 1.0/1.1"
+    },
+    {
+      "id": "SECIT-189",
+      "title": "Admin App Dev - Exposed to Internet",
+      "status": "Backlog",
+      "priority": "Medium",
+      "labels": ["Vulnerability", "CWE-668"],
+      "description_summary": "Dev admin app exposed to internet"
+    },
+    {
+      "id": "SECOPS-4",
+      "title": "Enforce Encrypted Connections for All DBs",
+      "status": "Backlog",
+      "priority": "Medium",
+      "labels": ["Cloud Security", "Vulnerability"],
+      "description_summary": "Enforce SSL/TLS for all database connections"
+    },
+    {
+      "id": "SECIT-381",
+      "title": "Pre-Account Takeover via Unverified Email Sessions and Automatic OAuth Account Linking",
+      "status": "In Progress",
+      "priority": "Low",
+      "labels": ["Vulnerability", "ezra-bug", "CWE-200", "Product Security"],
+      "description_summary": "Pre-account takeover via unverified email + OAuth auto-linking on my.ezra.com"
+    },
+    {
+      "id": "SECIT-361",
+      "title": "Promo Code Brute-Force Vulnerability Due to Missing Rate Limiting",
+      "status": "In Review",
+      "priority": "Medium",
+      "labels": ["Vulnerability", "CWE-307", "CWE-200", "Product Security"],
+      "description_summary": "Promo codes can be brute-forced due to no rate limiting"
+    },
+    {
+      "id": "SECIT-160",
+      "title": "Hardcoded Secrets in Terraform State Files",
+      "status": "In Progress",
+      "priority": "Medium",
+      "labels": ["2025-pentest", "Vulnerability", "CWE-798"],
+      "description_summary": "Terraform state files contain hardcoded secrets and credentials"
+    },
+    {
+      "id": "SECIT-157",
+      "title": "ArgoCD Dev UI/API & Swagger Publicly Exposed",
+      "status": "In Progress",
+      "priority": "Medium",
+      "labels": ["2025-pentest", "Vulnerability", "CWE-668"],
+      "description_summary": "ArgoCD web UI publicly accessible with version banners and API schema"
+    },
+    {
+      "id": "SECIT-353",
+      "title": "Weak DKIM keys (mailgun)",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability"],
+      "description_summary": "DKIM key is 1028-bit, considered weak"
+    },
+    {
+      "id": "SECIT-156",
+      "title": "Langsmith API Key Committed to GitHub",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability"],
+      "description_summary": "Active LangSmith API key committed to repository"
+    },
+    {
+      "id": "SECIT-141",
+      "title": "GoLang Vulnerability in Production Environment",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability"],
+      "description_summary": "CVE-2024-45337 in golang.org/x/crypto in production resources"
+    },
+    {
+      "id": "SECIT-360",
+      "title": "Hardcoded API Key Leaking Through Authentication Flow",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["CWE-200", "Vulnerability"],
+      "description_summary": "Firebase API key exposed in login URL query parameter"
+    },
+    {
+      "id": "SECIT-362",
+      "title": "Unauthenticated Exposure of Product Catalog and Pricing Details",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability", "CWE-200"],
+      "description_summary": "Full product catalog accessible without authentication"
+    },
+    {
+      "id": "SECIT-384",
+      "title": "Unauthenticated Access to /medical-docs/version",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Vulnerability", "CWE-200", "Product Security"],
+      "description_summary": "Internal API metadata exposed without authentication"
+    },
+    {
+      "id": "SECIT-385",
+      "title": "Unauthenticated Access to /product/list Exposes Full Product Catalog",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Vulnerability", "CWE-200", "Product Security"],
+      "description_summary": "Full product catalog with pricing and clinical descriptions accessible unauthenticated"
+    },
+    {
+      "id": "SECIT-386",
+      "title": "Public Webhook and Deploy Endpoints in dxdora Dev Service",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability", "Product Security"],
+      "description_summary": "Deployment endpoints publicly exposed without auth"
+    },
+    {
+      "id": "SECIT-387",
+      "title": "Unauthenticated Webhook Endpoint Accepting Arbitrary Payloads in Production Gateway",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["Vulnerability", "Bug", "Product Security"],
+      "description_summary": "Production webhook endpoint processes arbitrary unauthenticated payloads"
+    },
+    {
+      "id": "SECIT-165",
+      "title": "LLM – Information Exposure via Prompt Injection",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["CWE-1427", "2025-pentest", "Vulnerability", "CWE-200"],
+      "description_summary": "Prompt injection allows overriding LLM system safeguards"
+    },
+    {
+      "id": "SECIT-177",
+      "title": "Mobile API – Open redirect in Terra integration",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["CWE-601", "2025-pentest", "Vulnerability"],
+      "description_summary": "OAuth redirect parameters accept arbitrary values in Terra integration"
+    },
+    {
+      "id": "SECIT-169",
+      "title": "LLM – Unnecessary metadata disclosure",
+      "status": "In Progress",
+      "priority": "Medium",
+      "labels": ["2025-pentest", "Vulnerability", "CWE-200"],
+      "description_summary": "LLM API responses contain internal identifiers and debug information"
+    },
+    {
+      "id": "SECIT-216",
+      "title": "Overly Permissive Firewall Rules",
+      "status": "Todo",
+      "priority": "Medium",
+      "labels": ["2025-pentest", "Vulnerability", "CWE-668"],
+      "description_summary": "Firewall rules allowing unrestricted access from 0.0.0.0/0"
+    },
+    {
+      "id": "SECIT-172",
+      "title": "Services running with writable root filesystem and missing no-new-privileges",
+      "status": "In Progress",
+      "priority": "Medium",
+      "labels": ["2025-pentest", "Vulnerability", "CWE-266"],
+      "description_summary": "Containers run with writable root filesystem without no-new-privileges"
+    },
+    {
+      "id": "SECIT-173",
+      "title": "Missing USER Directive in Dockerfile",
+      "status": "In Progress",
+      "priority": "Medium",
+      "labels": ["CWE-266", "2025-pentest", "CWE-250", "Vulnerability"],
+      "description_summary": "Dockerfiles lack USER directive, containers run as root"
+    },
+    {
+      "id": "SECIT-178",
+      "title": "Android – Vulnerable dependencies",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-1395", "2025-pentest", "Vulnerability"],
+      "description_summary": "Android app includes outdated libraries with known CVEs"
+    },
+    {
+      "id": "SECIT-179",
+      "title": "Android – Shared libraries lack security flags",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-693", "2025-pentest", "Vulnerability"],
+      "description_summary": "Missing RELRO, PIE, NX flags on shared libraries"
+    },
+    {
+      "id": "SECIT-180",
+      "title": "Android – User data is stored in cleartext",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-922", "2025-pentest", "Vulnerability"],
+      "description_summary": "Unencrypted user data in device storage"
+    },
+    {
+      "id": "SECIT-181",
+      "title": "iOS – User data is stored in cleartext",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-922", "2025-pentest", "Vulnerability"],
+      "description_summary": "Unencrypted user data in iOS device storage"
+    },
+    {
+      "id": "SECIT-182",
+      "title": "Android – Unnecessary permissions in use",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-266", "2025-pentest", "CWE-250", "Vulnerability"],
+      "description_summary": "Android app requests excessive permissions"
+    },
+    {
+      "id": "SECIT-183",
+      "title": "Android – Application signed with SHA1withRSA",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-327", "2025-pentest", "Vulnerability"],
+      "description_summary": "APK signed with deprecated algorithm"
+    },
+    {
+      "id": "SECIT-184",
+      "title": "Android – Application allows backup",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-922", "2025-pentest", "Vulnerability", "CWE-200"],
+      "description_summary": "Android backup flag enabled, data extractable via backup utilities"
+    },
+    {
+      "id": "SECIT-185",
+      "title": "Android – Application shipped with debug file",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["2025-pentest", "Vulnerability", "CWE-200"],
+      "description_summary": "APK contains debug symbols"
+    },
+    {
+      "id": "SECIT-187",
+      "title": "Android – Use of non-standard TLS/SSL providers",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-295", "2025-pentest", "Vulnerability"],
+      "description_summary": "Non-standard TLS/SSL implementations in Android app"
+    },
+    {
+      "id": "SECIT-188",
+      "title": "Android & iOS – Missing application protections",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["CWE-693", "2025-pentest", "Vulnerability"],
+      "description_summary": "Missing root/jailbreak detection, code obfuscation, runtime integrity checks"
+    },
+    {
+      "id": "SECREQ-400",
+      "title": "Server-side request forgery in actions/internal_infra/freshpaint-proxy",
+      "status": "In Progress",
+      "priority": "Medium",
+      "labels": ["Vulnerability"],
+      "description_summary": "SSRF in freshpaint-proxy via user-controlled URL"
+    },
+    {
+      "id": "SECREQ-502",
+      "title": "Admin App – Open Redirect (Logout Callback)",
+      "status": "Todo",
+      "priority": "Low",
+      "labels": ["Vulnerability", "Terra-Pentest"],
+      "description_summary": "Logout endpoint accepts arbitrary callbackUrl without validation"
+    },
+    {
+      "id": "DEVOPS-1458",
+      "title": "Refactor usage of function-prod-connector",
+      "status": "Todo",
+      "priority": "High",
+      "labels": ["security", "Vulnerability", "Operational-Load"],
+      "description_summary": "VPC connector attached to default network with general firewall access"
+    },
+    {
+      "id": "EPD-11405",
+      "title": "Secure Cloud Run dev ingress: switch from public to internal load balancer",
+      "status": "Pending Deploy",
+      "priority": "No priority",
+      "labels": ["infrastructure", "Vulnerability"],
+      "description_summary": "Dev Cloud Run services set to --ingress=all making them publicly accessible"
+    }
+  ]
+}
